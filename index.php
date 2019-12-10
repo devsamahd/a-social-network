@@ -203,7 +203,7 @@ body{
     <div class="text-light " style="height: 50px; font-size: 20px;  background-color: #fb860d;" >
       <div class="navbar-brand" id='navbrand'><a href="#" class="navbar-brand" style="color: gold; font-weight: bolder; font-family: magneto;">.LY</a>
 </div>
-<input type="text" name="search" style="height: 45px; border-radius: 7px; border: 1px solid lightgray; width: 300px; background-color: #f5f5f5; padding-bottom: 4px; font-family: times new roman;" placeholder="Type here to search..."> <a href="https://web.facebook.com/help/community">Community | Help </a>
+<input type="text" name="search" style="height: 45px; border-radius: 7px; border: 1px solid lightgray; width: 300px; background-color: #f5f5f5; padding-bottom: 4px; font-family: times new roman;" placeholder="Type here to search..."> Community | Help 
 
 </div>
 

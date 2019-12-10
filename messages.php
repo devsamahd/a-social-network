@@ -68,8 +68,13 @@ if (!isset($_SESSION['id'])) {
 
   
   <?php
+
+
+
 $name="";
 $dp="";
+
+$stat="";
 
 
        $myid=$_SESSION['id'];
@@ -89,12 +94,12 @@ $dp="";
          $n="select * from tint where id=$vidd";
          $m=mysqli_query($con, $n);
          while ($o=mysqli_fetch_array($m)) {
-          $stat="offline";
+          
            $name=$o['username'];
            $dp=$o['profilepic'];
            echo "<input type='text' value='$vidd' name='vidd' hidden>";
           echo "<table width='100%' ><tr class='row'>";
-            echo "<td class='col-md-8'><h4>".ucwords($name)."</h4>$stat</td>";
+            echo "<td class='col-md-8'><h4>".ucwords($name)."</h4><div id='stat'></div></td>";
             echo "<td class='col-md-4'><div class='start_chat'><div class='btn btn-danger btn-xs start_chat' id='hkh'><a href='mes.php?id=$vidd' style='color:white; font-weight:3px; text-decoration:none;'>Start Chat</a></div></div></td>";
               echo "</tr></table>";
          }
@@ -105,7 +110,23 @@ $dp="";
 
 
 }
-       
+    
+
+    $a="select * from tint where id='$vidd'";
+$b=mysqli_query($con, $a);
+$time=time();
+$date=strtotime(date('Y-m-d G:i:s').'-10 second');
+$date=date('Y-m-d G:i:s', $date);
+
+
+while ($row=mysqli_fetch_array($b)) {
+  $stat=$row['status'];
+  echo "$stat";
+  if ($date>=$stat) {
+    echo "active";
+  }
+}
+
 
        ?>
 
@@ -118,9 +139,21 @@ $dp="";
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>     
   
 <script>
-  
 
+function updtime(){
+  $.ajax({
+    url:"updatestatus.php",
+    method:"get",
+    data:{
+    },
+    success:function(res){
+       $('#stat').html(res);
+    }
 
+  });
+}  
+
+setTimeout(updtime, 3000);
 
    
 </script>

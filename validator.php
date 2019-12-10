@@ -148,6 +148,9 @@ if (isset($_POST['post'])) {
 		if ($upd) {
 			echo "<div class='bg-success text-light'>Post successful</div>";
 		}
+		else{
+			echo mysqli_error();
+		}
 		
 	}
 
