@@ -203,7 +203,7 @@ body{
     <div class="text-light " style="height: 50px; font-size: 20px;  background-color: #fb860d;" >
       <div class="navbar-brand" id='navbrand'><a href="#" class="navbar-brand" style="color: gold; font-weight: bolder; font-family: magneto;">.LY</a>
 </div>
-<input type="text" name="search" style="height: 45px; border-radius: 7px; border: 1px solid lightgray; width: 300px; background-color: #f5f5f5; padding-bottom: 4px; font-family: times new roman;" placeholder="Type here to search..."> Community | Help
+<input type="text" name="search" style="height: 45px; border-radius: 7px; border: 1px solid lightgray; width: 300px; background-color: #f5f5f5; padding-bottom: 4px; font-family: times new roman;" placeholder="Type here to search..."> <a href="https://web.facebook.com/help/community">Community | Help </a>
 
 </div>
 
@@ -326,15 +326,11 @@ echo "</div>";
 </form></div>
 <div class="comec" style="border-left: 2px solid lightgray;">
   <div style="padding-left:20px; height: ; background-color: ; font-weight: bolder;font-size: 20px; color: gray; text-align: left;">Recent Comment</div>
-  <div class="recom">
-    <?php
+  <div class="recom" id="recom">
    
-      $q="select * from comments where recipid='$id'";
-      $r=mysqli_query($con, $q);
-      while ($row=mysqli_fetch_array($r)) {
-        echo "<div align='left' class='container' style='padding-bottom:;'>".$row['coommenttext']."</div>";
-      }
-    ?>
+   
+     
+   
   </div>
 </div>
 
@@ -366,6 +362,65 @@ echo "</div>";
       }
      });
 });
+
+    function loadcomments(){
+  var pid=<?php echo $postid;?>;
+  $.ajax({
+    url:"loadcomments.php",
+    method:"get",
+    data:{
+       pid:pid
+    },
+    success:function(res){
+      $('#recom').html(res);
+    }
+
+  });
+}
+
+setTimeout(loadcomments, 1000);
+
+ $(function(){
+  $('#wtf').hide();
+   $('#ph').hide();
+   $('#pn').hide();
+ 
+  $('#navbrand').mouseenter(function(){
+    $('#wtf').show();
+
+    
+  });
+ 
+ function window(){
+ if($(window).width()<540){
+  $('#ph').show();
+  $('#pn').show();
+
+  $('.card').css('width','100%');
+  $('.navbar').hide();
+      $('#extb').css('padding-left','0px');
+      function hmm(){
+        $('#sidenav').slideUp();
+      }
+
+
+      setTimeout(hmm, 3000);
+    }
+
+$('#navbrand').mouseleave(function(){
+  $('#wtf').hide();
+});
+
+
+
+}
+
+
+
+
+ });
+
+
    </script> 
 
 <?php 
@@ -440,53 +495,7 @@ echo "</div>";
 
   
 </div>
-<div style="padding-right: 50px; padding-bottom: 10px;" align="right" class="fixed-bottom"><i class="fa fa-comment-o"  style="border-radius: 50%; background-color: white;  width: 100px; height: 100px; color: #fb860d; text-align: center; padding-top: 25px; font-size: 50px; border:1px solid #fb860d;"></i></div>
+
 </body>
-<script>
- $(function(){
-  $('#wtf').hide();
-   $('#ph').hide();
-   $('#pn').hide();
- 
-  $('#navbrand').mouseenter(function(){
-    $('#wtf').show();
 
-    
-  });
- 
- function window(){
- if($(window).width()<540){
-  $('#ph').show();
-  $('#pn').show();
-
-  $('.card').css('width','100%');
-  $('.navbar').hide();
-      $('#extb').css('padding-left','0px');
-      function hmm(){
-        $('#sidenav').slideUp();
-      }
-
-
-      setTimeout(hmm, 3000);
-    }
-
-$('#navbrand').mouseleave(function(){
-  $('#wtf').hide();
-});
-
-
-
-}
-
-
- });
-
-// When the user clicks on <div>, open the popup
-
-  // var popup = document.getElementById("myPopup");
-  // popup.classList.toggle("show");
- 
-
-</script>
-</script>
 </html>
