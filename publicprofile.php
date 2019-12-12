@@ -60,7 +60,7 @@ $date=$row['date'];
 
   </div><br><br>
 
-<div align="center"><tt><font size="40px" color="gray"><b><?php echo $user ?><a href="deleteuser.php?id=<?php echo $id?>"><div class="fa fa-trash"></div></a></b></tt></font></div>
+<div align="center"><tt><font size="40px" color="gray"><b><?php echo $user ?><a href="delete.php?id=<?php echo $id?>"><div class="fa fa-trash"></div></a></b></tt></font></div>
 <div align="center">
 <form method="post">
   

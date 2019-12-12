@@ -2,16 +2,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php session_start();?>
+	<?php session_start();
+	$id=$_SESSION['id'];
+     $ww="select * from tint where id='$id'";
+     $rr=mysqli_query($con, $ww);
+     while ($e=mysqli_fetch_array($rr)) {
+     	$nn=$e['username'];
+     	$ew=$e['profilepic'];
+     }
+	?>
 	<title>edit</title>
 </head>
 <body>
 	<div></div>
 
 	<form method="post" enctype="multipart/form-data">
-<input type="file" name="profilepic" class="form-control"><br>
-		<input type="text" name="username" placeholder="enter new username" class="form-control"><br>
-		<div align="center"><input type="submit" name="edit" value="EDIT" class="btn btn-primary">&nbsp;<input type="submit" name="delete" value="DELETE ACCOUNT" class="btn btn-primary"></div><br>
+<input type="file" name="profilepic" class="form-control" value="<?=$ew?>"><br>
+		<input type="text" name="username" placeholder="" class="form-control" value="<?=$nn?>"><br>
+		<div align="center"><input type="submit" name="edit" value="EDIT" class="btn btn-primary">&nbsp;<input type="submit" name="delete" value="DELETE ACCOUNT" class="btn btn-primary">&nbsp;<input type="submit" name="cancel" value="cancel" class="btn btn-primary"></div><br>
 
 
 	</form>
@@ -84,6 +92,14 @@ if (isset($_POST['delete'])) {
 	}
 
 
+
+if (isset($_POST['cancel'])) {
+	
+
+	header("location:userprofile.php");
+	
+		
+	}
 
 
 

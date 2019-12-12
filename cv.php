@@ -122,9 +122,9 @@ window.onload = function() {
 		<div class="navbar navbar-inverse bg-dark text-light" style="height: 50px;">
 			<div class="navbar-brand" style="font-family: magneto; padding-top: 0px;"><h1>Vyral<font color="gold">.CV</font></h1></div>
 			
-			<div class="navbar-nav text-light"></div>
+			<div class=" text-light" align="right"></div>
 			<div class="navbar-nav"></div>
-			<div class="navbar-nav"></div>
+			<div class="navbar-nav" style="font-size: 20px; font-weight: bolder; font-family: times new roman; padding-bottom: 20px;"><a href="index.php"> Back</a></div>
 		</div>
 	</nav>
 
@@ -152,11 +152,11 @@ $id=$_GET['id'];
 </section>
 </div>
 
-<div class="row" style="padding-top: 110px;">
-<div class="col-md-4">
-	<h1>ABOUT ME</h1>
+<div class="" style="padding-top: 140px;">
+<div class="">
 	
-	<div class="container" align="center"><img src="<?php echo $dp; ?>" style="width: 50%; height: 200px; border-radius: 50%;"></div>
+	
+	<div class="container" align="center"><img src="<?php echo $dp; ?>" style="width: 50%; height: 400px; border-radius: 10px;"></div>
 	<h3 style="text-align: center;"><font color="gray"><?php echo "<a href='userprofile.php?id='$passedid' style='color:inherit; text-decoration:none;'>".$name."</a>"; ?></font></h3>
 	<hr>
 
@@ -165,38 +165,28 @@ $id=$_GET['id'];
 
 
 <!-- message fromcv -->
-	<form>
-	<div class="form-group"><input type="text" name="msgfromcv" class="form-control"></div>
-	<div align="center" class="form-group"><input type="submit" name="sendmsgfromcv" class="btn btn-warning text-light" style="border: 2px solid gray;" value="send message"></div>
-
-</form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div>
-<div class="col-md-4">
-	<h1>My DOCUMENTS</h1>
-
 	
-</div>
-<div class="col-md-4">
-	<h1>WORK EXPERIENCE</h1>
 
-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
+
+<div style="background-color: lightgray;">
+  
+</div>
+	
 </div>
 </body>
 </html>

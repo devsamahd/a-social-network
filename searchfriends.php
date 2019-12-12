@@ -14,13 +14,13 @@ if ($q=='') {
 	
 }
 elseif ($m->num_rows==0) {
-	echo "no match found";
+	echo "<div style='color:gray;''>no match found</div>";
 }
 
 else{
 
 	if ($res==1) {
-		echo "1 match found";
+		echo "<div style='color:gray;''>1 match found<div>";
 		while ($row=mysqli_fetch_array($m)) {
 		$img=$row['profilepic'];
 		$id=$row['id'];

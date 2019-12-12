@@ -195,16 +195,15 @@ body{
 
 
 
-
-
 <body>
   <nav class="row  fixed-top" style="background-color: #fb860d;">
     <div class="col-md-6">
     <div class="text-light " style="height: 50px; font-size: 20px;  background-color: #fb860d;" >
       <div class="navbar-brand" id='navbrand'><a href="#" class="navbar-brand" style="color: gold; font-weight: bolder; font-family: magneto;">.LY</a>
 </div>
-<input type="text" name="search" style="height: 45px; border-radius: 7px; border: 1px solid lightgray; width: 300px; background-color: #f5f5f5; padding-bottom: 4px; font-family: times new roman;" placeholder="Type here to search..."> Community | Help 
 
+<input type="text" name="search" style="height: 45px; border-radius: 7px; border: 1px solid lightgray; width: 300px; background-color: #f5f5f5; padding-bottom: 4px; font-family: times new roman;" placeholder="Type here to search..." id='q'onkeyup="search()">Community | Help 
+<div id="result" style="background-color: white; color: white !important; overflow-y: auto;"></div>
 </div>
 
     </div>
@@ -343,6 +342,23 @@ echo "</div>";
   ?>
 
    <script>
+    function search(){
+  var x=$('#q').val()
+
+  $.ajax({
+    type:"GET",
+    url:"searchfriends.php",
+    data:{
+      "q":x
+    },
+
+    success: function(rest){
+      document.getElementById('result').innerHTML=rest;
+    }
+  });
+}
+
+
     $('#comment').click(function(){
     var com=$('#ct').val();
     var user=<?php echo $userid;?>;
@@ -363,22 +379,22 @@ echo "</div>";
      });
 });
 
-    function loadcomments(){
-  var pid=<?php echo $postid;?>;
-  $.ajax({
-    url:"loadcomments.php",
-    method:"get",
-    data:{
-       pid:pid
-    },
-    success:function(res){
-      $('#recom').html(res);
-    }
+//     function loadcomments(){
+//   var pid=<?php// echo $postid;?>;
+//   $.ajax({
+//     url:"loadcomments.php",
+//     method:"get",
+//     data:{
+//        pid:pid
+//     },
+//     success:function(res){
+//       $('#recom').html(res);
+//     }
 
-  });
-}
+//   });
+// }
 
-setTimeout(loadcomments, 1000);
+// setTimeout(loadcomments, 1000);
 
  $(function(){
   $('#wtf').hide();

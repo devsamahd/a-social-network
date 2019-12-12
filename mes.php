@@ -1,11 +1,14 @@
 <?php include('mylinks.php'); include('mysqlicon.php'); 
 
- 
+ mysqli_set_charset($con, "utf8mb4");
 
 
 ?>
+
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
+<script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
 <style type="text/css">
 
 	
@@ -31,7 +34,7 @@
 #messages{
 	padding-bottom: 200px;
 	overflow-y: auto;
-	height: 530px;
+	height: 500px;
 }
 
 </style>
@@ -64,7 +67,7 @@ while ($row=mysqli_fetch_array($b)) {
 
 	
 		<div class=" bg-danger text-light" align="center" style="height: 50px; font-size: 40px; font-weight: bold;">
-			<div id="name"><?php echo $yourname; ?></div>
+			<div id="name"><span style="font-size: 20px; font-family: times new roman;">You're currently in a chat with </span><?php echo $yourname; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font align="right" style="text-align: right; border:1px solid white; border-radius: 5px; "><a href="messages.php" style="text-align: right; font-family: times new roman;  font-size: 30px; ">Back</a></font></div>
 		</div>
 		
 	</div>
@@ -88,9 +91,9 @@ while ($row=mysqli_fetch_array($b)) {
 			<div class="col-md-3"><div></div></div>
 			<div class="col-md-6 ">
 				<!-- send message -->
-			<div class="" align="center">
+			<div class="" align="left">
 				<form method="post">
-					<input type="text" name="message-text" id="message-text" style="width: 80%; height: 40px; border-radius: 5px; border:1px solid lightgray;">
+					<textarea type="text" name="message-text" id="message-text" style="width: 100%; height: 40px; border-radius: 5px; border:1px solid lightgray;"></textarea>
 					<span align="right">
 						
 						<button  class="btn" id="send" name="sendmessage" style="font-size: 30px; color: gray;"><i class="fa fa-paper-plane-o"></i></button></span>
@@ -144,7 +147,12 @@ $yourid=$_GET['id'];
 }
 
 setInterval(call,2000);
-  })
+  });
+
+$('#message-text').emojioneArea({
+  pickerPosition:"top",
+   toneStyle:"bullet"
+});
 	
 	
   

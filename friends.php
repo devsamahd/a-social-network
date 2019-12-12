@@ -134,6 +134,8 @@ echo "<form method='post'><td><a href='addfriends.php?id=$id' style='color:royal
     success: function(rest){
       document.getElementById('result').innerHTML=rest;
     }
-  })
+  });
 }
+
+
 </script>

@@ -1,4 +1,4 @@
-<?php  include('validator.php'); include('mysqlicon.php'); include('mylinks.php');?>
+<?php  include('validator.php'); include("mysqlicon.php"); include('mylinks.php');?>
 
 <?php
 $ss=session_status();
@@ -10,6 +10,7 @@ if (!isset($_SESSION['id'])) {
   header("location:login.php");
 }
 
+
 ?> 
 
 <style>
@@ -20,8 +21,10 @@ if (!isset($_SESSION['id'])) {
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.css">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
-  <meta charset="utf-8">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.js"></script>
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>messages</title>
@@ -95,6 +98,24 @@ $stat="";
          $m=mysqli_query($con, $n);
          while ($o=mysqli_fetch_array($m)) {
           
+    $a="select * from tint where id='$vidd'";
+$b=mysqli_query($con, $a);
+$time=time();
+$date=strtotime(date('Y-m-d G:i:s').'-10 second');
+$date=date('Y-m-d G:i:s', $date);
+
+
+while ($row=mysqli_fetch_array($b)) {
+  $stat=$row['status'];
+  echo "$stat";
+  if ($stat>=$date) {
+    echo "active";
+  }
+  else{
+    echo "offline";
+  }
+}
+
            $name=$o['username'];
            $dp=$o['profilepic'];
            echo "<input type='text' value='$vidd' name='vidd' hidden>";
@@ -111,21 +132,6 @@ $stat="";
 
 }
     
-
-    $a="select * from tint where id='$vidd'";
-$b=mysqli_query($con, $a);
-$time=time();
-$date=strtotime(date('Y-m-d G:i:s').'-10 second');
-$date=date('Y-m-d G:i:s', $date);
-
-
-while ($row=mysqli_fetch_array($b)) {
-  $stat=$row['status'];
-  echo "$stat";
-  if ($date>=$stat) {
-    echo "active";
-  }
-}
 
 
        ?>
@@ -146,8 +152,8 @@ function updtime(){
     method:"get",
     data:{
     },
-    success:function(res){
-       $('#stat').html(res);
+    success:function(){
+       
     }
 
   });

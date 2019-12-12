@@ -1,6 +1,6 @@
 <?php include('mysqlicon.php'); include('mylinks.php');  ?>
 <?php
-$defimg="images/img1.jpg";
+$defimg="images/img1.png";
 $error="";
 
 if (isset($_POST['signup'])) {
